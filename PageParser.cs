@@ -5,7 +5,7 @@ public class PageParser
     private const string BaseUrl = "https://cdiak.archives.gov.ua/spysok_fondiv/";
     //https://cdiak.archives.gov.ua/spysok_fondiv/1782/0001/0065/img/1782_0001_0065_0007.jpg
     
-    public static async Task<DownloadInfo?> ParserPage(string fond, string opis, string delo)
+    public static async Task<DownloadInfo?> ParserPage(short fond, short opis, short delo)
     {
         var client = new HttpClient();
         var uri = BuildUri(fond, opis, delo);
@@ -55,11 +55,11 @@ public class PageParser
         return downloadInfo;
     }
     
-    private static Uri BuildUri(string fond, string opis, string delo)
+    private static Uri BuildUri(short fond, short opis, short delo)
     {
-        var f = fond.PadLeft(4, '0');
-        var o = opis.PadLeft(4, '0');
-        var d = delo.PadLeft(4, '0');
+        var f = fond.ToString().PadLeft(4, '0');
+        var o = opis.ToString().PadLeft(4, '0');
+        var d = delo.ToString().PadLeft(4, '0');
 
         return new Uri(BaseUrl + $"{f}/{o}/{d}/");
     }

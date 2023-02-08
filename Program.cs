@@ -8,9 +8,9 @@ var version = Assembly.GetEntryAssembly()?.GetCustomAttribute<AssemblyInformatio
 AnsiConsole.Write(new FigletText($"CDIAK Downloader v.{version}").Centered().Color(Color.Green));
 ConsoleHelper.GetAnyKey();
 
-var fond = AnsiConsole.Ask<string>("Номер фонда?");
-var opis = AnsiConsole.Ask<string>("Номер описи?");
-var delo = AnsiConsole.Ask<string>("Номер дела?");
+var fond = AnsiConsole.Ask<short>("Номер фонда?");
+var opis = AnsiConsole.Ask<short>("Номер описи?");
+var delo = AnsiConsole.Ask<short>("Номер дела?");
 
 var downloadInfo = await PageParser.ParserPage(fond, opis, delo);
 if (downloadInfo == null)
