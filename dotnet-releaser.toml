@@ -1,0 +1,28 @@
+# configuration file for dotnet-releaser
+
+profile = "custom"
+
+[msbuild]
+project = "CdiakDownloader.csproj"
+configuration = "Release"
+
+[msbuild.properties]
+PublishTrimmed = true
+PublishSingleFile = true
+SelfContained = true
+
+[nuget]
+publish = false
+
+[changelog]
+publish = false
+
+# Default targets for Windows
+[[pack]]
+rid = ["win-x64"]
+kinds = ["zip"]
+
+# Default targets for macOS
+[[pack]]
+rid = ["osx-x64"]
+kinds = ["tar"]
